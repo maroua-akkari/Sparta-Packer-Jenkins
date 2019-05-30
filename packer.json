@@ -1,14 +1,11 @@
 {
   "variables":{
-    "aws_access_key": "{{env `AWS_ACCESS_KEY_ID`}}",
-    "aws_secret_key": "{{env `AWS_SECRET_ACCESS_KEY_ID`}}",
+    "aws_access_key": "",
+    "aws_secret_key": "",
     "version": "{{env `GIT_TAG_NAME`}}"
   },
   "builders":[{
     "type": "amazon-ebs",
-    "subnet_id": "subnet-0f5808733370665a4",
-    "ssh_keypair_name": "Team1BH",
-    "ssh_private_key_file": "Team1BH.pem",
     "ssh_agent_auth": true,
     "access_key": "{{user `aws_access_key`}}",
     "secret_key": "{{user `aws_secret_key`}}",
@@ -16,7 +13,7 @@
     "source_ami_filter":{
       "filters":{
         "virtualization-type": "hvm",
-        "name": "ubuntu/images/hmv-ssd/*ubuntu-xenial-16.04-amd64-server-*",
+        "name": "ubuntu/images/*ubuntu-xenial-16.04-amd64-server-*",
         "root-device-type": "ebs"
       },
       "owners": ["099720109477"],
